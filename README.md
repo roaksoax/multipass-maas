@@ -19,7 +19,7 @@ To install MAAS, it is as simple as running the following command. This
 will create a Multipass VM with 10 CPUs, 10 GB of RAM and 40G of storage.
 
 ```
- $ multipass launch daily:bionic --name maas -c 10 -m 10G -d 40G --cloud-init cloud-init.cfg
+ $ multipass launch daily:bionic --name maas -c 10 -m 10G -d 40G --cloud-init maas.cfg
 ```
 
 After this process is complete, you can now access MAAS.
@@ -48,17 +48,23 @@ In some situations, multipass will timeout and will give the impression
 that the installation and setup has failed and a similar message will
 be displayed:
 
+```
  $ multipass launch daily:bionic --name maas -c 2 -m 6G -d 20G --cloud-init cloud-init.sh
    launch failed: The following errors occurred:
    timed out waiting for initialization to complete
+```
 
 Please note that this is *NOT* and actual failure, given that
 cloud-init will continue running the configuration. To check the
 progress, please access the multipass instance with:
 
+```
  $ multipass shell maas
+```
 
 And tail the logs to confirm cloud-init is still working:
 
+```
  multipass@maas:~$ tail -f /var/log/cloud-init-output.log
+```
 

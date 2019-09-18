@@ -18,31 +18,30 @@ creating VMs out of the box.
 To install MAAS, it is as simple as running the following command. This
 will create a Multipass VM with 10 CPUs, 10 GB of RAM and 40G of storage.
 
+```
  $ multipass launch daily:bionic --name maas -c 10 -m 10G -d 40G --cloud-init cloud-init.cfg
+```
 
 After this process is complete, you can now access MAAS.
 
 ## Accessing MAAS
 To access MAAS we simply need to find out the Multipass VM IP address:
 
+```
  $ multipass info maas
    Name:           maas
    State:          Running
    IPv4:           10.165.99.141
    [...]
+```
 
 Using this IP address, we can log into the MAAS UI (http://10.165.99.141:5240/MAAS/).
 The default credentials are admin:admin.
 
 ## Using MAAS
-Since MAAS is already configure to use KVM inside the same instance as
-a KVM host, you can start creating your VM's with:
-
- $ maas admin allocate
-
-or
-
- $ maas admin pod compose
+MAAS is now ready to use, the only manual step you need is to create VMs yourself.
+Please refer to `Compose pod virtual machines` under https://maas.io/docs/cli-composable-machines-management
+for more information.
 
 # Known issues
 In some situations, multipass will timeout and will give the impression
